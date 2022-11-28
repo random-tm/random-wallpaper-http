@@ -32,6 +32,7 @@ export default () => {
 
                 addFiles(data, imageDB).then((dataToWrite) => {
                     fs.writeFileSync("./images.json", JSON.stringify(dataToWrite));
+                    resolve(dataToWrite);
                 })
 
             })
