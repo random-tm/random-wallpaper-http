@@ -15,11 +15,17 @@ export default () => {
         }
         
         if(imageDbExists){
-            const db = JSON.parse(fs.readFileSync("./images.json", "utf-8"));
-            if(db.version != versionCurrent){
-                //TODO DB migration Code here
+            try {
+                const db = JSON.parse(fs.readFileSync("./images.json", "utf-8"));
+                if(db.version != versionCurrent){
+                    //TODO DB migration Code here
+                }
+                resolve(db);
+            } catch(e) {
+                console.log("Fatal error reading database; regenerating")
+                fs.rm("./images.json");
+                imageDbExists = false;
             }
-            resolve(db);
         }
         
         if(!imageDbExists){
