@@ -15,5 +15,8 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "lodash": "^4.17.21"
+  },
+  "overrides": {
+    "nth-check": "2.0.1"
   }
 }
